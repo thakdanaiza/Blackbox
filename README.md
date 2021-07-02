@@ -14,9 +14,11 @@
     
 # Setup Micro Sd-card
 1.	สร้างไฟล์ Data.txt ลงใน Micro Sd-card จากบนคอมพิวเตอร์ดังภาพ
+
 ![image](https://user-images.githubusercontent.com/48859187/124211089-c1ac7380-db16-11eb-9b14-d4948dafb053.png)
 
 ![image](https://user-images.githubusercontent.com/48859187/124211099-c53ffa80-db16-11eb-90be-252de84d2cc4.png)
+
 2.	ใส่ Micro Sd-card เข้ากับ black ผ่าน Port Micro Sd-card
 3.	เปิดใช้งานและเช็คสถานะไฟสีเขียวหากมีข้อผิดพลาด จะแสดงสถานะ ไฟสีเขียว
 
