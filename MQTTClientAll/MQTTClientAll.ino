@@ -219,12 +219,12 @@ void loop() {
         payload += gps.speed.kmph() ; payload += ",";
         payload += gps.altitude.meters() ; payload += ",";
 
-        Serial.println(payload);
-        //file.print(payload);
+        //Serial.println(payload);
+        file.print(payload);
 
         double temperature = (double)tempRaw / 340.0 + 36.53;
         //file.println(temperature);
-        Serial.println(x++);
+        //Serial.println(x++);
         client.publish("15335092", payload);
         client.loop();
         delay(1000);
