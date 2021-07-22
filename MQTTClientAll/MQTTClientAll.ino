@@ -3,7 +3,7 @@
 #include "SPI.h"
 #include <Wire.h>
 #include <Kalman.h> // Source: https://github.com/TKJElectronics/KalmanFilter
-#include "TinyGPS++.h"
+#include <TinyGPS++.h>
 #include <HardwareSerial.h>
 #include "EspMQTTClient.h"
 
@@ -199,8 +199,12 @@ void loop() {
         payload += gps.time.minute() ; payload += ",";
         if (gps.time.second() < 10) payload += "0" ;
         payload += gps.time.second() ; payload += ",";
-        payload += gps.location.lat() ; payload += ",";
-        payload += gps.location.lng() ; payload += ",";
+        char bufnewlat[10];
+        gcvt(gps.location.lat(), 7, bufnewlat);
+        char bufnewlng[10];
+        gcvt(gps.location.lng(), 7, bufnewlng);
+        payload += bufnewlat ; payload += ",";
+        payload += bufnewlng ; payload += ",";
         payload += gps.location.age() ; payload += ",";
         payload += roll ; payload += ",";
         payload += gyroXangle ; payload += ",";
@@ -216,14 +220,14 @@ void loop() {
         payload += gps.altitude.meters() ; payload += ",";
 
         Serial.println(payload);
-        file.print(payload);
+        //file.print(payload);
 
         double temperature = (double)tempRaw / 340.0 + 36.53;
-        file.println(temperature);
+        //file.println(temperature);
         Serial.println(x++);
         client.publish("15335092", payload);
         client.loop();
-        delay(5000);
+        delay(1000);
       }
     }
     /*
@@ -254,6 +258,7 @@ void loop() {
   if (millis() > 5000 && gps.charsProcessed() < 10)
   {
     Serial.println(F("No GPS detected: check wiring."));
+    delay(1000);
   }
   payload = "";
 
