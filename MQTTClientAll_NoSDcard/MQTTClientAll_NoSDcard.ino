@@ -3,7 +3,7 @@
 #include "SPI.h"
 #include <Wire.h>
 #include <Kalman.h> // Source: https://github.com/TKJElectronics/KalmanFilter
-#include <TinyGPS++.h>
+#include "TinyGPS++.h"
 #include <HardwareSerial.h>
 #include "EspMQTTClient.h"
 
